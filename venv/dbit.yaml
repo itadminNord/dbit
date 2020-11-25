@@ -1,0 +1,61 @@
+version: "1"
+
+volumes:
+    dbit_bd:
+
+services:
+    redmine:
+        image: localhost:5000/redmine:1
+        volumes:
+          - dbit_bd:/data/db -v /sharedock/redmine/app_volume/:/usr/src/redmine/ -v /sharedock:/sharedock -v /sharedock/redmine/files/:/usr/src/redmine/files/
+        restart: always
+        environment:
+          - HOSTNAME="redmine"
+
+services:
+    zabbix:
+        image: localhost:5000/zabbix:1
+        volumes:
+          -dbit_bd:/data/db -v /sharedock/:/sharedock/ -v /sharedock/zabbix/usr/lib/zabbix/alertscripts/:/usr/lib/zabbix/alertscripts/
+        restart: always
+        ports:
+          - 10051:10051
+        environment:
+          - PHP_TZ="Europe/Moscow"
+          - ZBX_SERVER_NAME="zbbx.nord.ru"
+          - HOSTNAME="zabbix"
+services:
+    nginx-rp:
+        image: localhost:5000/nginx-rp:1
+        volumes:
+          -v /sharedock/:/sharedock/ -v /sharedock/nginx-rp/sites-enabled/:/etc/nginx/sites-enabled/
+        restart: always
+        ports:
+          - 80:80
+          - 443:443
+        environment:
+          - PHP_TZ="Europe/Moscow"
+          - ZBX_SERVER_NAME="zbbx.nord.ru"
+          - HOSTNAME="nginx-rp"
+        links:
+          - redmine
+          - zabbix
+
+services:
+    isc-dhcp:
+        image: localhost:5000/isc-dhcp:1
+        volumes:
+          -v /sharedock/docker-dhcpd/data/:/data
+        restart: always
+        ports:
+          - 80:80
+          - 443:443
+        environment:
+          - PHP_TZ="Europe/Moscow"
+          - ZBX_SERVER_NAME="zbbx.nord.ru"
+          - HOSTNAME="nginx-rp"
+        links:
+          - redmine
+          - zabbix
+docker run -d --name  --net host   eth0
+
