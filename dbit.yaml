@@ -3,16 +3,6 @@ version: "1"
 volumes:
     dbit_bd:
 
-services:
-    redmine:
-        image: localhost:5000/redmine:1
-        volumes:
-          - /sharedock/redmine/app_volume/:/usr/src/redmine/
-          - /sharedock:/sharedock/
-          - /sharedock/redmine/files/:/usr/src/redmine/files/
-        restart: always
-        environment:
-          - HOSTNAME="redmine"
 
 services:
     zabbix:
