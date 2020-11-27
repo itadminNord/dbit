@@ -21,7 +21,7 @@ services:
         - D:\mysql/var/lib/mysql/
       restart: always
       environment:
-        MYSQL_ROOT_PASSWORD: Lbvtnhf7373
+        MYSQL_ROOT_PASSWORD_FILE:
         MYSQL_DATABASE: redmine
         MYSQL_USER: redmine
         MYSQL_PASSWORD: redmine
