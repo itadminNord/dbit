@@ -4,6 +4,7 @@ version: '3.1'
 services:
     redmine:
         image: nordit/redmine:1
+# указать расположение базы данных
         volumes:
           - D:\backup\sharedock\redmine\app_volume:/usr/src/redmine/
           - D:\backup\sharedock:/sharedock/
@@ -15,6 +16,16 @@ services:
           REDMINE_DB_PASSWORD: redmine
         ports:
           - 80:3000
+    mysql:
+      image: mysql:5.7.30
+      volumes:
+        - D:\mysql/var/lib/mysql/
+      restart: always
+      environment:
+        MYSQL_ROOT_PASSWORD: Lbvtnhf7373
+        REDMINE_DB_MYSQL: redmine
+        REDMINE_DB_USERNAME: redmine
+        REDMINE_DB_PASSWORD: redmine
 
 
 # для запуска контейнера
