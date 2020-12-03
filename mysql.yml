@@ -1,0 +1,12 @@
+mysql:
+      image: mysql:5.7.30
+      volumes:
+        - D:\mysql:/var/lib/mysql/
+      ports:
+        - 3306:3306
+      restart: always
+      environment:
+        MYSQL_ROOT_PASSWORD: Lbvtnhf7373
+        MYSQL_DATABASE: redmine
+        MYSQL_USER: redmine
+        MYSQL_PASSWORD: redmine

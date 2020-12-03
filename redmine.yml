@@ -1,12 +1,13 @@
 version: '3.1'
 
+
 services:
     redmine:
-        image: nordretail/redmine:latest
+        image: nordit/redmine:1
         volumes:
-          - /sharedock/redmine/app_volume:/usr/src/redmine/
-          - /sharedock:/sharedock/
-          - /sharedock/redmine/files:/usr/src/redmine/files/
+          - D:\backup\sharedock\redmine\app_volume:/usr/src/redmine/
+          - D:\backup\sharedock:/sharedock/
+          - D:\backup\sharedock\redmine\files:/usr/src/redmine/files/
         restart: always
         environment:
           REDMINE_DB_MYSQL: redmine
@@ -14,18 +15,8 @@ services:
           REDMINE_DB_PASSWORD: redmine
         ports:
           - 80:3000
-# path to DB
-    mysql:
-      image: mysql:5.7.30
-      volumes:
-        - /sharedock/mysql:/var/lib/mysql/
-      restart: always
-      environment:
-        MYSQL_ROOT_PASSWORD:
-        MYSQL_DATABASE: redmine
-        MYSQL_USER: redmine
-        MYSQL_PASSWORD: redmine
 
 
-# For run Instance:
-# docker-compose -f redmine.yml up
+
+
+
