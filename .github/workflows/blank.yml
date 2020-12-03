@@ -14,8 +14,8 @@ jobs:
     steps:
       - name: Execure few command
         run: |
-           curl -s -X POST "https://api.telegram.org/bot610891803:AAHTX9_4RVjOBfx-G4Bvte30vSXkgQvAzyA/sendMessage" -F chat_id=491455655 -F text="Application name: ${{ env.packpackage_name }}"
-           curl -s -X POST "https://api.telegram.org/bot610891803:AAHTX9_4RVjOBfx-G4Bvte30vSXkgQvAzyA/sendMessage" -F chat_id=491455655 -F text="GoodJob"     
+
+           curl -s -X POST "https://api.telegram.org/bot610891803:AAHTX9_4RVjOBfx-G4Bvte30vSXkgQvAzyA/sendMessage" -F chat_id=491455655 -F text="CheckRepo"
       - name: Git clone my repo
         uses: actions/checkout@v1
        
