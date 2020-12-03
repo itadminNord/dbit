@@ -1,0 +1,20 @@
+version: '3.1'
+
+services:
+    redmine:
+        image: redmine
+        volumes:
+          - D:\redmine:/usr/src/redmine/
+        restart: always
+        environment:
+          REDMINE_DB_POSTGRES: db
+          REDMINE_DB_PASSWORD: Lbvtnhf7373
+        ports:
+          - 80:3000
+
+    db:
+      image: postgres
+      restart: always
+      environment:
+        POSTGRES_PASSWORD: Lbvtnhf7373
+        POSTGRES_DB: redmine
