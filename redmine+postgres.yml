@@ -8,7 +8,7 @@ services:
         restart: always
         environment:
           REDMINE_DB_POSTGRES: db
-          REDMINE_DB_PASSWORD: Lbvtnhf7373
+          REDMINE_DB_PASSWORD:
         ports:
           - 80:3000
 
@@ -16,5 +16,5 @@ services:
       image: postgres
       restart: always
       environment:
-        POSTGRES_PASSWORD: Lbvtnhf7373
+        POSTGRES_PASSWORD:
         POSTGRES_DB: redmine

@@ -18,10 +18,10 @@ services:
     mysql:
       image: mysql:5.7.30
       volumes:
-        - D:\mysql:/var/lib/mysql/
+        - /sharedock/mysql:/var/lib/mysql/
       restart: always
       environment:
-        MYSQL_ROOT_PASSWORD: Lbvtnhf7373
+        MYSQL_ROOT_PASSWORD:
         MYSQL_DATABASE: redmine
         MYSQL_USER: redmine
         MYSQL_PASSWORD: redmine
